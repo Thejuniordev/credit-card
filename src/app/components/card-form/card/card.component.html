@@ -1,7 +1,9 @@
 <div class="card {{ card.class }}">
   <div class="card__face card__face-front {{ card.flag }}">
     <div class="card__flag">
-      <img src="{{ card.imageFlag }}" alt="{{ card.flag }}" class="card__flag">
+      <figure>
+        <img src="{{ card.imageFlag }}" class="card__flag">
+      </figure>
     </div>
     <span class="card__number">{{ card.number }} </span>
     <div class="card__content flex align__center">

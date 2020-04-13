@@ -11,7 +11,7 @@ export class CardFormComponent implements OnInit {
   @Input() error: any;
 
   flag: any = {
-    visa: '../../../../assets/images/brand.png',
+    visa: '../../../../assets/images/visa_flag.png',
     master: '../../../../assets/images/master_flag.png',
     elo: '../../../../assets/images/elo_flag.png',
   };
@@ -75,7 +75,7 @@ export class CardFormComponent implements OnInit {
       this.card.numberError = '';
       return true;
     } else {
-      this.card.imageFlag = '';
+      this.card.imageFlag = undefined;
       this.card.flag = '';
       this.card.numberError = 'active';
     }
