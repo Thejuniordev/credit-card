@@ -1,0 +1,17 @@
+<div class="card {{ card.class }}">
+  <div class="card__face card__face-front {{ card.flag }}">
+    <div class="card__flag">
+      <img src="{{ card.imageFlag }}" alt="{{ card.flag }}" class="card__flag">
+    </div>
+    <span class="card__number">{{ card.number }} </span>
+    <div class="card__content flex align__center">
+      <span class="card__name">{{ card.name }}</span>
+      <span class="card__date">{{ card.validate }}</span>
+    </div>
+  </div>
+  <div class="card__face card__face-back {{ card.flag }}">
+    <div class="card__code">
+      <span class="card__code-security">{{ card.cvv }}</span>
+    </div>
+  </div>
+</div>

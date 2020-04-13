@@ -1,0 +1,148 @@
+@import '../../../../sass/abstracts/variables';
+.card{
+  position: absolute;
+  left: 50%;
+  top: -100px;
+  width: 100%;
+  max-width: 290px;
+  height: 172px;
+  background-color: $gray__2;
+  border-radius: 10px;
+  transform: translateX(-50%);
+  transition: transform .7s;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  overflow: hidden;
+  box-shadow: 1px 8px 20px 0px rgba(0, 0, 0, 0.4);
+  @media(min-width: 768px){
+    position: relative;
+    top: 0;
+    margin-top: 50px;
+  }
+  @media (min-width: 1024px){
+    position: absolute;
+    top: 30%;
+    margin-top: 50px;
+    left: -190px;
+  }
+  @media (min-width: 1110px){
+    max-width: 400px;
+    height: 240px;
+    left: -280px;
+  }
+  &__flag{
+    opacity: 0.7;
+    height: 70px;
+  }
+  &__face{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    color: $white;
+    &-front{
+      background-image: linear-gradient(to right top, #b0b0b0, #989898, #818181, #6b6b6b, #555555);
+      padding: 20px;
+    }
+    &-back{
+      position: relative;
+      transform: rotateY( 180deg );
+      background-image: linear-gradient(to left bottom, #b0b0b0, #989898, #818181, #6b6b6b, #555555);
+      padding: 20px;
+      &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 30px;
+        width: 100%;
+        height: 40px;
+        background: $gray__2;
+      }
+    }
+    &.master{
+      background-image: linear-gradient(to left top, #f09a1a, #ef8109, #ed6506, #ea430f, #e5001a);
+    }
+    &.elo{
+      background-image: linear-gradient(to left top, #e8301f, #b01d2b, #751829, #3c131d, #000000);
+    }
+    &.visa{
+      background-image: linear-gradient(to right top, #08074e, #1e1973, #322c9c, #4640c6, #5956f2);
+    }
+  }
+  &.enabled{
+    transform: translateX(-150%) rotateY(-180deg);
+    .card__face{
+      backface-visibility: visible;
+    }
+  }
+  &__code{
+    position: absolute;
+    width: 100%;
+    max-width: 160px;
+    height: 30px;
+    top: 50%;
+    left: 30px;
+    background: $white;
+    &::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 100%;
+      max-width: 100px;
+      height: 5px;
+      background-color: $gray__1;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 6px;
+      width: 100%;
+      max-width: 100px;
+      height: 5px;
+      background-color: $gray__1;
+    }
+    &-security{
+      position: absolute;
+      color: $black;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      height: 10px;
+    }
+  }
+  &__number{
+    position: absolute;
+    display: block;
+    width: 100%;
+    top: 45%;
+    font-size: 22px;
+    text-shadow: 0px 1px 2px #000000B3;
+    @media (min-width: 1110px){
+      font-size: 31px;
+    }
+  }
+  &__content{
+    position: absolute;
+    bottom: 38px;
+    left: 0;
+    padding: 0 20px;
+    width: 100%;
+  }
+  &__name{
+    text-shadow: 0px 1px 2px #000000B3;
+    text-transform: uppercase;
+    font-size: 14px;
+    @media (min-width: 1110px){
+      font-size: 20px;
+    }
+  }
+  &__date{
+    text-shadow: 0px 1px 2px #000000B3;
+    font-size: 14px;
+    @media (min-width: 1110px){
+      font-size: 20px;
+    }
+  }
+}

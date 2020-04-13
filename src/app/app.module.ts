@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { PaymentComponent } from './payment/payment.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { CardFormComponent } from './components/card-form/card-form.component';
+import { CardComponent } from './components/card-form/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PaymentComponent,
     HeaderComponent,
-    CardFormComponent
+    CardFormComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
