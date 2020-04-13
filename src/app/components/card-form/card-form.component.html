@@ -1,0 +1,60 @@
+<section class="card__form">
+  <div class="container">
+
+    <form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+      <div class="form__content">
+        <input type="tel" (keyup)="cardNumber($event.target.value)" maxlength="19" name="numbercard"
+          [ngModel]="card.numbercard" required #number="ngModel" />
+
+        <label class="form__label" for="numbercard">Número do cartão</label>
+        <span class="error {{ card.numberError }}">Número de cartão inválido</span>
+      </div>
+
+      <div class="form__content">
+        <input type="text" id="cardname" (keyup)="cardName($event.target.value)" name="name_card" ngModel
+          #nameCard="ngModel" required />
+
+        <label class="form__label" for="name_card">Nome (igual ao cartão)</label>
+        <span class="error {{ card.nameError }}">Insira seu nome completo</span>
+      </div>
+
+      <div class="form__content-group flex align__center">
+
+        <div class="form__content">
+          <input type="tel" (keyup)="cardValidate($event.target.value)" name="valid_card" ngModel #validCard="ngModel"
+            maxlength="5" required />
+          <label class="form__label" for="valid_card">Validade</label>
+          <span class="error {{ card.validateError }}">Data inválida</span>
+        </div>
+
+        <div class="form__content">
+          <input type="text" (keyup)="cardCvv($event.target.value)" (focus)="backCard()" (focusout)="frontCard()"
+            maxlength="4" name="cvv" ngModel #cvv="ngModel" required />
+          <label class="form__label" for="cvv">CVV</label>
+          <span class="error {{ card.cvvError }}">Código inválido</span>
+        </div>
+      </div>
+
+      <div class="form__content">
+        <select name="" id="">
+          <option value="">Número de parcelas</option>
+          <option value="">1x R$12.000,00 sem juros</option>
+          <option value="">2x R$6.000,00 sem juros</option>
+          <option value="">3x R$4.000,00 sem juros</option>
+          <option value="">4x R$3.000,00 sem juros</option>
+          <option value="">5x R$2.400,00 sem juros</option>
+          <option value="">6x R$2.000,00 sem juros</option>
+          <option value="">7x R$1.714,28 sem juros</option>
+          <option value="">8x R$1.500,00 sem juros</option>
+          <option value="">9x R$1.133,33 sem juros</option>
+          <option value="">10x R$1.200,00 sem juros</option>
+          <option value="">11x R$1.090,90 sem juros</option>
+          <option value="">12x R$1.000,00 sem juros</option>
+        </select>
+        <span class="error {{ card.selecterror }}">Insira o número de parcelas</span>
+      </div>
+      <button type="submit" class="btn__default">Continuar</button>
+    </form>
+  </div>
+</section>
