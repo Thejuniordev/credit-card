@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased !important;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+  position: relative;
+}
+
+body {
+  position: relative;
+  line-height: 1;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+textarea {
+  resize: none;
+  font-size: 14px;
+  color: #565656;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+select {
+  outline: none;
+}
+
+strong{
+  font-weight: 700;
+}

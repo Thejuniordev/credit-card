@@ -1,0 +1,16 @@
+@import '../../sass/abstracts/variables';
+.back{
+  background: transparent;
+}
+.btn{
+  &__default{
+    width: 100%;
+    font-size: 17px;
+    color: $white;
+    background-color: $red__2;
+    padding: 17px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+  }
+}
