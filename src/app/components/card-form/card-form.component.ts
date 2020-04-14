@@ -36,7 +36,6 @@ export class CardFormComponent implements OnInit {
 
   getFlag(): void {
     this.imageFlag = this.cardService.getFlag();
-    console.log('Minha Flag: ', this.imageFlag);
   }
 
   getAcceptedCard(): void {
@@ -82,10 +81,21 @@ export class CardFormComponent implements OnInit {
     }
   }
 
+  cardName(data) {
+    this.card.name = data;
+  }
+
+  cardExpire(data) {
+    this.card.expire = data;
+  }
+
+  cardCvv(data) {
+    this.card.cvv = data;
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
-        console.log('Campos invalidos');
         return;
     }
     alert('SUCCESS!!');

@@ -24,7 +24,7 @@ export class CardService {
     number: '**** **** **** ****',
     name: 'Nome do Titular',
     expire: '00/00',
-    cvv: null,
+    cvv: '',
     installments: '12x',
     class: 'disabled',
     active: false

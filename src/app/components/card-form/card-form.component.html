@@ -12,7 +12,7 @@
       </div>
 
       <div class="form__content">
-        <input type="text" formControlName="nameCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.nameCard.errors }" />
+        <input type="text" formControlName="nameCard" class="form__content-control" (keyup)="cardName($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.nameCard.errors }" />
         <label class="form__label" for="name_card">Nome (igual ao cartão)</label>
         <div *ngIf="submitted &amp;&amp; registerForm.controls.nameCard.errors" class="text-danger">
           <span *ngIf="registerForm.controls.nameCard.errors.required">Insira seu nome completo</span>
@@ -22,7 +22,7 @@
       <div class="form__content-group flex align__center">
 
         <div class="form__content">
-          <input type="text" formControlName="expiredCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.expiredCard.errors }" />
+          <input type="text" formControlName="expiredCard" class="form__content-control" (keyup)="cardExpire($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.expiredCard.errors }" />
           <label class="form__label" for="valid_card">Validade</label>
           <div *ngIf="submitted &amp;&amp; registerForm.controls.expiredCard.errors" class="text-danger">
             <span *ngIf="registerForm.controls.expiredCard.errors.required">Data inválida</span>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="form__content">
-          <input type="text" formControlName="cvvCard" class="form__content-control" (focus)="backCard()" (focusout)="frontCard()" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
+          <input type="text" formControlName="cvvCard" class="form__content-control" (keyup)="cardCvv($event.target.value)" (focus)="backCard()" (focusout)="frontCard()" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
           <label class="form__label" for="cvv">
             CVV
            <span class="tooltip__info">
