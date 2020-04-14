@@ -4,7 +4,7 @@
     <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
       <div class="form__content">
-        <input type="text" formControlName="numberCard" class="form__content-control" (keyup)="cardNumber($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.numberCard.errors }" />
+        <input type="text" formControlName="numberCard" class="form__content-control" maxlength="19" mask="0000 0000 0000 0000" (keyup)="cardNumber($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.numberCard.errors }" />
         <label class="form__label" for="numbercard">Número do cartão</label>
         <div *ngIf="submitted &amp;&amp; registerForm.controls.numberCard.errors" class="text-danger">
           <span *ngIf="registerForm.controls.numberCard.errors.required">Número de cartão inválido</span>
@@ -22,7 +22,7 @@
       <div class="form__content-group flex align__center">
 
         <div class="form__content">
-          <input type="text" formControlName="expiredCard" class="form__content-control" (keyup)="cardExpire($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.expiredCard.errors }" />
+          <input type="text" formControlName="expiredCard" class="form__content-control" mask="00/00" (keyup)="cardExpire($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.expiredCard.errors }" />
           <label class="form__label" for="valid_card">Validade</label>
           <div *ngIf="submitted &amp;&amp; registerForm.controls.expiredCard.errors" class="text-danger">
             <span *ngIf="registerForm.controls.expiredCard.errors.required">Data inválida</span>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="form__content">
-          <input type="text" formControlName="cvvCard" class="form__content-control" (keyup)="cardCvv($event.target.value)" (focus)="backCard()" (focusout)="frontCard()" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
+          <input type="text" formControlName="cvvCard" class="form__content-control" maxlength="3" (keyup)="cardCvv($event.target.value)" (focus)="backCard()" (focusout)="frontCard()" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
           <label class="form__label" for="cvv">
             CVV
            <span class="tooltip__info">
@@ -47,7 +47,7 @@
       <div class="form__content">
         <select formControlName="installmentCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.installmentCard.errors }">
           <option value="">Número de parcelas</option>
-          <option value="">1x R$12.000,00 sem juros</option>
+          <option value="1x R$12.000,00 sem juros">1x R$12.000,00 sem juros</option>
           <option value="">2x R$6.000,00 sem juros</option>
           <option value="">3x R$4.000,00 sem juros</option>
           <option value="">4x R$3.000,00 sem juros</option>
