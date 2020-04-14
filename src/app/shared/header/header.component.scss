@@ -19,6 +19,9 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
+    @media (min-width: 1024px){
+      left: 50px;
+    }
     &:before {
 			content: "";
 			display: inline-block;
@@ -38,9 +41,19 @@
       font-size: 13px;
       text-align: center;
       width: 100%;
+      @media (min-width: 1024px){
+        display: none;
+      }
     }
     &-text{
+      color: $white;
+      font-size: 13px;
+      text-align: center;
+      width: 100%;
       display: none;
+      @media (min-width: 1024px){
+        display: block;
+      }
     }
   }
   &__bottom{

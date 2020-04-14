@@ -25,9 +25,6 @@ export class CardService {
     name: 'Nome do Titular',
     expire: '00/00',
     cvv: '',
-    installments: '12x',
-    class: 'disabled',
-    active: false
   };
 
   getFlag() {
