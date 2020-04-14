@@ -1,6 +1,7 @@
 <section class="card__form">
   <div class="container">
     <app-card [integration]="integration"></app-card>
+    <app-steps></app-steps>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
       <div class="form__content">

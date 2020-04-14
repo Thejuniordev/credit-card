@@ -1,0 +1,62 @@
+@import '../../../sass/abstracts/variables';
+
+.steps {
+  display: none;
+  @media (min-width: 1024px){
+    display: block;
+    position: relative;
+    top: 50px;
+    left: 0;
+    padding-left: 0;
+    color: $red__2;
+    font-size: 13px;
+    margin-bottom: 50px;
+    &__list{
+      width: 100%;
+      max-width: 480px;
+      text-align: right;
+      &-item{
+        display: inline-block;
+        counter-increment: count-step;
+        &.actived{
+          &::before{
+            content: url('../../../assets/images/icon-check.svg');
+            display: inline-block;
+						text-align: center;
+						font-size: 13px;
+						font-weight: bold;
+						font-family: Arial;
+						background: $red__2;
+						line-height: 23px;
+          }
+        }
+        &::before{
+          content: counter(count-step);
+          display: inline-block;
+          width: 22px;
+          height: 22px;
+          text-align: center;
+          line-height: 22px;
+          border-radius: 100%;
+          border: solid 1px $red__2;
+          margin-right: 15px;
+        }
+        &::after{
+          content: "";
+          display: inline-block;
+          width: 7px;
+          height: 7px;
+          transform: rotate(135deg);
+          border-top: solid 2px $red__2;
+          border-left: solid 2px $red__2;
+          margin: 0 15px;
+        }
+        &:last-child{
+          &::after{
+            content: none;
+          }
+        }
+      }
+    }
+  }
+}
