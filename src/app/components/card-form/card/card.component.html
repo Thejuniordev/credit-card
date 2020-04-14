@@ -1,19 +1,19 @@
-<div class="card {{ card.class }}">
-  <div class="card__face card__face-front {{ card.flag }}">
+<div class="card {{ integration.backCard }}">
+  <div class="card__face card__face-front  {{ card.flag }}">
     <div class="card__flag">
       <figure>
         <img src="{{ card.imageFlag }}" class="card__flag">
       </figure>
     </div>
-    <span class="card__number">{{ card.number }} </span>
+    <span class="card__number">{{ card.number }}</span>
     <div class="card__content flex align__center">
       <span class="card__name">{{ card.name }}</span>
-      <span class="card__date">{{ card.validate }}</span>
+      <span class="card__date">{{ card.expire }}</span>
     </div>
   </div>
-  <div class="card__face card__face-back {{ card.flag }}">
+  <div class="card__face card__face-back  {{ card.flag }}">
     <div class="card__code">
-      <span class="card__code-security">{{ card.cvv }}</span>
+      <span class="card__code-security"></span>
     </div>
   </div>
 </div>

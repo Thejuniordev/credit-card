@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { CardService } from '../../shared/services/card.service';
 
 @Component({
   selector: 'app-card-form',
@@ -9,8 +11,37 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CardFormComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
+  @Output() card: any;
+  @Output() imageFlag: any;
+  @Output() acceptedCreditCards: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+
+  constructor(private formBuilder: FormBuilder, private cardService: CardService) { }
+
+  integration: any = {
+    backCard: 'disabled',
+  };
+
+  backCard() {
+    this.integration.backCard = 'enabled';
+  }
+
+  frontCard() {
+    this.integration.backCard = 'disabled';
+  }
+
+  getCard(): void {
+    this.card = this.cardService.getCard();
+  }
+
+  getFlag(): void {
+    this.imageFlag = this.cardService.getFlag();
+    console.log('Minha Flag: ', this.imageFlag);
+  }
+
+  getAcceptedCard(): void {
+    this.acceptedCreditCards = this.cardService.getAcceptedCard();
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -20,16 +51,43 @@ export class CardFormComponent implements OnInit {
       cvvCard: ['', [Validators.required]],
       installmentCard: ['', [Validators.required]]
     });
+
+    this.getCard();
+
+    this.getFlag();
+
+    this.getAcceptedCard();
+  }
+
+  cardNumber(data) {
+    this.card.number = data;
+    data = data.replace(/\D/g, '');
+
+    if (this.acceptedCreditCards.mastercard.test(data)) {
+      this.card.flag = 'master';
+      this.card.imageFlag = this.imageFlag.master;
+      return true;
+    } else if (this.acceptedCreditCards.visa.test(data)) {
+      this.card.flag = 'visa';
+      this.card.imageFlag = this.imageFlag.visa;
+      return true;
+    } else if (this.acceptedCreditCards.elo.test(data)) {
+      this.card.flag  = 'elo';
+      this.card.imageFlag = this.imageFlag.elo;
+      return true;
+    } else {
+      this.card.flag  = '';
+      this.card.imageFlag = '';
+      return true;
+    }
   }
 
   onSubmit() {
     this.submitted = true;
- 
     if (this.registerForm.invalid) {
         console.log('Campos invalidos');
         return;
     }
-    
     alert('SUCCESS!!');
   }
 

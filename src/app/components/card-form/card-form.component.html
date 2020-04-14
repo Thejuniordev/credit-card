@@ -1,9 +1,10 @@
 <section class="card__form">
   <div class="container">
+    <app-card [integration]="integration"></app-card>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
       <div class="form__content">
-        <input type="text" formControlName="numberCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.numberCard.errors }" />
+        <input type="text" formControlName="numberCard" class="form__content-control" (keyup)="cardNumber($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.numberCard.errors }" />
         <label class="form__label" for="numbercard">Número do cartão</label>
         <div *ngIf="submitted &amp;&amp; registerForm.controls.numberCard.errors" class="text-danger">
           <span *ngIf="registerForm.controls.numberCard.errors.required">Número de cartão inválido</span>
@@ -29,7 +30,7 @@
         </div>
 
         <div class="form__content">
-          <input type="text" formControlName="cvvCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
+          <input type="text" formControlName="cvvCard" class="form__content-control" (focus)="backCard()" (focusout)="frontCard()" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
           <label class="form__label" for="cvv">
             CVV
            <span class="tooltip__info">
