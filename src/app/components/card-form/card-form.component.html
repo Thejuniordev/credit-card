@@ -1,43 +1,50 @@
 <section class="card__form">
   <div class="container">
-    <app-card [card]="card"></app-card>
-    <form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
       <div class="form__content">
-        <input type="tel" (keyup)="cardNumber($event.target.value)" maxlength="19" name="numbercard"
-          [ngModel]="card.numbercard" required #number="ngModel" />
-
+        <input type="text" formControlName="numberCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.numberCard.errors }" />
         <label class="form__label" for="numbercard">Número do cartão</label>
-        <span class="error {{ card.numberError }}">Número de cartão inválido</span>
+        <div *ngIf="submitted &amp;&amp; registerForm.controls.numberCard.errors" class="text-danger">
+          <span *ngIf="registerForm.controls.numberCard.errors.required">Número de cartão inválido</span>
+        </div>
       </div>
 
       <div class="form__content">
-        <input type="text" id="cardname" (keyup)="cardName($event.target.value)" name="name_card" ngModel
-          #nameCard="ngModel" required />
-
+        <input type="text" formControlName="nameCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.nameCard.errors }" />
         <label class="form__label" for="name_card">Nome (igual ao cartão)</label>
-        <span class="error {{ card.nameError }}">Insira seu nome completo</span>
+        <div *ngIf="submitted &amp;&amp; registerForm.controls.nameCard.errors" class="text-danger">
+          <span *ngIf="registerForm.controls.nameCard.errors.required">Insira seu nome completo</span>
+        </div>
       </div>
 
       <div class="form__content-group flex align__center">
 
         <div class="form__content">
-          <input type="tel" (keyup)="cardValidate($event.target.value)" name="valid_card" ngModel #validCard="ngModel"
-            maxlength="5" required />
+          <input type="text" formControlName="expiredCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.expiredCard.errors }" />
           <label class="form__label" for="valid_card">Validade</label>
-          <span class="error {{ card.validateError }}">Data inválida</span>
+          <div *ngIf="submitted &amp;&amp; registerForm.controls.expiredCard.errors" class="text-danger">
+            <span *ngIf="registerForm.controls.expiredCard.errors.required">Data inválida</span>
+          </div>
         </div>
 
         <div class="form__content">
-          <input type="text" (keyup)="cardCvv($event.target.value)" (focus)="backCard()" (focusout)="frontCard()"
-            maxlength="4" name="cvv" ngModel #cvv="ngModel" required />
-          <label class="form__label" for="cvv">CVV</label>
-          <span class="error {{ card.cvvError }}">Código inválido</span>
+          <input type="text" formControlName="cvvCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
+          <label class="form__label" for="cvv">
+            CVV
+           <span class="tooltip__info">
+            <span class="tooltip__info-icon"></span>
+            <span class="tooltip__info-text">Os 3 dígitos na parte de trás do cartão</span>
+           </span>
+          </label>
+          <div *ngIf="submitted &amp;&amp; registerForm.controls.cvvCard.errors" class="text-danger">
+            <span *ngIf="registerForm.controls.cvvCard.errors.required">Código inválido</span>
+          </div>
         </div>
       </div>
 
       <div class="form__content">
-        <select name="" id="">
+        <select formControlName="installmentCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.installmentCard.errors }">
           <option value="">Número de parcelas</option>
           <option value="">1x R$12.000,00 sem juros</option>
           <option value="">2x R$6.000,00 sem juros</option>
@@ -52,7 +59,10 @@
           <option value="">11x R$1.090,90 sem juros</option>
           <option value="">12x R$1.000,00 sem juros</option>
         </select>
-        <span class="error {{ card.selecterror }}">Insira o número de parcelas</span>
+        <span class="angle__down"></span>
+        <div *ngIf="submitted &amp;&amp; registerForm.controls.installmentCard.errors" class="text-danger">
+          <span *ngIf="registerForm.controls.installmentCard.errors.required">Insira o número de parcelas</span>
+        </div>
       </div>
       <button type="submit" class="btn__default">Continuar</button>
     </form>

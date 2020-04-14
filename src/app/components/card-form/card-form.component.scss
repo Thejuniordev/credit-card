@@ -30,13 +30,11 @@
       left: 0;
       transition: all .3s ease;
     }
-    .error{
-      display: none;
-      font-size: 12px;
-      color: $red__2;
-      margin-top: 5px;
-      &.active{
-        display: block;
+    .text-danger{
+      span{
+        font-size: 12px;
+        color: $red__2;
+        margin-top: 5px;
       }
     }
     input{
@@ -56,7 +54,7 @@
         top:-12px;
 	      font-size:12px;
       }
-      &:valid ~ label{
+      &.ng-valid ~ label{
         top:-12px;
         font-size:12px;
         transition: all .3s ease;
@@ -68,12 +66,70 @@
         border-bottom: 1px solid $red__2;
       }
     }
+    .tooltip__info {
+      position: absolute;
+      &-text{
+        position: absolute;
+        width: 140px;
+        background: $white;
+        font-size: 12px;
+        display: block;
+        line-height: 125%;
+        border-radius: 5px;
+        left: -7px;
+        top: -50px;
+        color: $gray__1;
+        padding: 5px;
+        box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.25);
+        display: none;
+        opacity: 0;
+        &::after{
+          content: '';
+          position: absolute;
+          left: 8px;
+          bottom: -6px;
+          border-top: 6px solid $white;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+        }
+      }
+      &:hover{
+        .tooltip__info-text{
+          display: block;
+          opacity: 1;
+        }
+      }
+      &-icon{
+        position: absolute;
+        background: url('../../../assets/images/icon-info.svg') no-repeat;
+        width: 13px;
+        height: 13px;
+        top: 0;
+        left: 2px;
+        opacity: 0.3;
+      }
+    }
     select{
       background: transparent;
       color: $gray__2;
       width: 100%;
       border-bottom: 1px solid $gray__1;
       padding: 5px 0;
+    }
+    .angle__down{
+      position: absolute;
+      width: 17px;
+      height: 13px;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      &::before{
+        content: '';
+        position: absolute;
+        background: url('../../../assets/images/angle-down.svg');
+        width: 100%;
+        height: 100%;
+      }
     }
     &-group{
       .form__content{
