@@ -1,27 +1,33 @@
-# CreditCardBexs
+# Credit Card Bexs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+Esse projeto foi desenvolvido para o teste de Front end
 
-## Development server
+## Para executar a aplicação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Siga as etapas:
 
-## Code scaffolding
+  1. Faça um clone ou baixe o arquivo desse repositório.
+  2. Instale a última versão do [NodeJS](https://nodejs.org/en/).
+  3. Instale a última versão do Angular / CLI em execução npm install -g @angular/cli.
+  4. execute o comando npm install.
+  5. Para rodar a aplicação no seu localhost, execute o comando ng serve ou ng serve --host 192.168.0.0 -->> (seu host), para poder visualizar em um dispositivo móvel.
+  6. Para rodar os teste execute ng test via [Karma](https://karma-runner.github.io).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este projeto foi gerado com a  [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
-## Build
+## Sobre o projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Esse projeto foi realizado utilizando Sass para estilização, mobile-first, e validações por Validator do Angular form.
+Podem ser testados cartões como:
+- Visa (4024007184775715)*
+- Master (5514339465438026)*
+- Elo (6362970000457013)*
 
-## Running unit tests
+*Números fictícios
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Validações para nome data e CVV, não estão aplicadas apenas máscaras de campo, e validação caso campo esteja vazio.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Sobre o desenvolvedor
+Junior Alves
+WhatsApp: (11) 9.8415-5543
+`junioralves.webdeveloper@gmail.com`
