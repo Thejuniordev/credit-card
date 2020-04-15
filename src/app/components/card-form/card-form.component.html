@@ -1,11 +1,11 @@
 <section class="card__form">
   <div class="container">
-    <app-card [integration]="integration"></app-card>
+    <app-card [backCard]="backCard"></app-card>
     <app-steps></app-steps>
-    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
 
       <div class="form__content">
-        <input type="text" formControlName="numberCard" class="form__content-control" maxlength="19" mask="0000 0000 0000 0000" (keyup)="cardNumber($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.numberCard.errors }" />
+        <input type="tel" formControlName="numberCard" class="form__content-control" maxlength="19" mask="0000 0000 0000 0000" (keyup)="cardNumber($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.numberCard.errors }" />
         <label class="form__label" for="numbercard">Número do cartão</label>
         <div *ngIf="submitted &amp;&amp; registerForm.controls.numberCard.errors" class="text-danger">
           <span *ngIf="registerForm.controls.numberCard.errors.required">Número de cartão inválido</span>
@@ -23,7 +23,7 @@
       <div class="form__content-group flex align__center">
 
         <div class="form__content">
-          <input type="text" formControlName="expiredCard" class="form__content-control" mask="00/00" (keyup)="cardExpire($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.expiredCard.errors }" />
+          <input type="tel" formControlName="expiredCard" class="form__content-control" mask="00/00" (keyup)="cardExpire($event.target.value)" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.expiredCard.errors }" />
           <label class="form__label" for="valid_card">Validade</label>
           <div *ngIf="submitted &amp;&amp; registerForm.controls.expiredCard.errors" class="text-danger">
             <span *ngIf="registerForm.controls.expiredCard.errors.required">Data inválida</span>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form__content">
-          <input type="text" formControlName="cvvCard" class="form__content-control" maxlength="3" (keyup)="cardCvv($event.target.value)" (focus)="backCard()" (focusout)="frontCard()" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
+          <input type="tel" formControlName="cvvCard" class="form__content-control" maxlength="3" (keyup)="cardCvv($event.target.value)" (focus)="enableCard()" (focusout)="disableCard()" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.cvvCard.errors }" />
           <label class="form__label" for="cvv">
             CVV
            <span class="tooltip__info">
@@ -49,17 +49,17 @@
         <select formControlName="installmentCard" class="form__content-control" [ngClass]="{ 'is-invalid': submitted &amp;&amp; registerForm.controls.installmentCard.errors }">
           <option value="">Número de parcelas</option>
           <option value="1x R$12.000,00 sem juros">1x R$12.000,00 sem juros</option>
-          <option value="">2x R$6.000,00 sem juros</option>
-          <option value="">3x R$4.000,00 sem juros</option>
-          <option value="">4x R$3.000,00 sem juros</option>
-          <option value="">5x R$2.400,00 sem juros</option>
-          <option value="">6x R$2.000,00 sem juros</option>
-          <option value="">7x R$1.714,28 sem juros</option>
-          <option value="">8x R$1.500,00 sem juros</option>
-          <option value="">9x R$1.133,33 sem juros</option>
-          <option value="">10x R$1.200,00 sem juros</option>
-          <option value="">11x R$1.090,90 sem juros</option>
-          <option value="">12x R$1.000,00 sem juros</option>
+          <option value="2x R$6.000,00 sem juros">2x R$6.000,00 sem juros</option>
+          <option value="3x R$4.000,00 sem juros">3x R$4.000,00 sem juros</option>
+          <option value="4x R$3.000,00 sem juros">4x R$3.000,00 sem juros</option>
+          <option value="5x R$2.400,00 sem juros">5x R$2.400,00 sem juros</option>
+          <option value="6x R$2.000,00 sem juros">6x R$2.000,00 sem juros</option>
+          <option value="7x R$1.714,28 sem juros">7x R$1.714,28 sem juros</option>
+          <option value="8x R$1.500,00 sem juros">8x R$1.500,00 sem juros</option>
+          <option value="9x R$1.133,33 sem juros">9x R$1.133,33 sem juros</option>
+          <option value="10x R$1.200,00 sem juros">10x R$1.200,00 sem juros</option>
+          <option value="11x R$1.090,90 sem juros">11x R$1.090,90 sem juros</option>
+          <option value="12x R$1.000,00 sem juros">12x R$1.000,00 sem juros</option>
         </select>
         <span class="angle__down"></span>
         <div *ngIf="submitted &amp;&amp; registerForm.controls.installmentCard.errors" class="text-danger">

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { CardService } from '../../shared/services/card.service';
 
@@ -9,6 +9,9 @@ import { CardService } from '../../shared/services/card.service';
   styleUrls: ['./card-form.component.scss']
 })
 export class CardFormComponent implements OnInit {
+
+  backCard: string = 'disabled';
+
   registerForm: FormGroup;
   submitted = false;
   @Output() card: any;
@@ -18,16 +21,13 @@ export class CardFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private cardService: CardService) { }
 
-  integration: any = {
-    backCard: 'disabled',
-  };
 
-  backCard() {
-    this.integration.backCard = 'enabled';
+  enableCard() {
+    this.backCard = 'enabled';
   }
 
-  frontCard() {
-    this.integration.backCard = 'disabled';
+  disableCard() {
+    this.backCard = 'disabled';
   }
 
   getCard(): void {
@@ -44,11 +44,11 @@ export class CardFormComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      numberCard: ['', Validators.required],
-      nameCard: ['', Validators.required],
-      expiredCard: ['', [Validators.required]],
-      cvvCard: ['', [Validators.required]],
-      installmentCard: ['', [Validators.required]]
+      numberCard: new FormControl ('', Validators.required),
+      nameCard: new FormControl ('', Validators.required),
+      expiredCard: new FormControl ('', Validators.required),
+      cvvCard: new FormControl ('', Validators.required),
+      installmentCard: new FormControl ('', Validators.required),
     });
 
     this.getCard();

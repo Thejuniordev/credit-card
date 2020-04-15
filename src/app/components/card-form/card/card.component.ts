@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { CardService } from '../../../shared/services/card.service';
+import { CardFormComponent } from '../card-form.component';
 
 @Component({
   selector: 'app-card',
@@ -8,8 +9,8 @@ import { CardService } from '../../../shared/services/card.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-
-  @Input() integration: any;
+  
+  @Input() backCard: any;
   @Input() card: any;
 
   constructor(private cardService: CardService) { }
